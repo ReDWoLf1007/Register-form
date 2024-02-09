@@ -1,4 +1,4 @@
-const express = require("express")      //Framwork - Simplifies making applications
+const express = require("express")      //Framework - Simplifies making applications
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const dotenv = require("dotenv")        //Hides mongoDB password in database
@@ -8,8 +8,16 @@ dotenv.config();
 
 const port = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://localhost/registrationDatabase");
 
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
+
+mongoose.connect(`mongodb+srv://${username}:${password}@umiii.yhzoxr3.mongodb.net/registerationFormDB`,{
+    useNewUrlParser : true,
+    useUnifiedTopology : true,
+});
+
+//registration schema
 const registrationSchema = new mongoose.Schema({
     name : String,
     email : String,
@@ -23,9 +31,11 @@ const Registration = mongoose.model("Registration", registrationSchema);        
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+
 app.get("/", (req, res)=>{
     res.sendFile(__dirname + "/pages/index.html");
 })
+
 
 app.post("/register", async(req, res)=>{
     try{
@@ -36,8 +46,6 @@ app.post("/register", async(req, res)=>{
 
         //check for Existing user
         if(!existingUser){
-
-            
             const registrationData = new Registration({
                 name,
                 email,
@@ -47,11 +55,12 @@ app.post("/register", async(req, res)=>{
             res.redirect("/success");
         }
         else{
-            console.log("User Already Exists")
+            alert("User Already Exists");
             res.redirect("/error");
         }
         }
         catch(error){
+            console.log(error);
             res.redirect("error");
     }
 })
