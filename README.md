@@ -8,3 +8,5 @@ The website is made using the folloing languages and tools:
 and other related tools.
 
 Link for the Website: https://registration-form-i1g4.onrender.com/
+
+To learn how to implement and create the website and store the data in mongoDB watch the video on youtube, link: https://youtu.be/XOgwuTEWPWM?feature=shared
