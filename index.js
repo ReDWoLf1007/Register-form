@@ -11,6 +11,9 @@ const port = process.env.PORT || 3000;
 
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
+//Two types of databases can be added
+// local or online
+// It's prefered to be online sourced so link can be made online
 
 mongoose.connect(`mongodb+srv://${username}:${password}@umiii.yhzoxr3.mongodb.net/registerationFormDB`);
 
