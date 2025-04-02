@@ -1,6 +1,6 @@
 # Registration Form
 This repository contains the files that make a registration form website.
-The website is made using the folloing languages and tools:
+The website is made using the following languages and tools:
 1. Nodejs
 2. Expressjs
 3. HTML
